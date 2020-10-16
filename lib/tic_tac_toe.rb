@@ -44,7 +44,7 @@ def winner(board)
 end
 
 def turn_count()
-  @board.count |square| square == "X" || square == "O"
+  @board.count { |square| square == "X" || square == "O" }
 end
 
 def current_player(board)
