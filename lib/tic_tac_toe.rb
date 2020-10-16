@@ -16,7 +16,7 @@ def won?(board)
       position_taken?(board,combo[0]) && board[combo[0]] == board[combo[1]] && board[combo[0]]== board[combo[2]]
   end
   if win == nil
-    win = false 
+    win = false
   end
   win
 end
@@ -29,7 +29,7 @@ end
 
 def draw?(board)
   if full?(board) && won?(board) == false
-    true 
+    true
   end
 end
 
@@ -49,7 +49,7 @@ def turn_count(board)
   turn = 0
   board.each do |square|
     if square != " "
-      turn += 1 
+      turn += 1
     end
   end
   turn
