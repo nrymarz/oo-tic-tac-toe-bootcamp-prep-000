@@ -9,9 +9,9 @@ def position_taken?(index)
   !(@board[index].nil? || @board[index] == " ")
 end
 
-def won?(board)
+def won?
   win = WIN_COMBINATIONS.detect do |combo|
-      position_taken?(board,combo[0]) && board[combo[0]] == board[combo[1]] && board[combo[0]]== board[combo[2]]
+      position_taken?(combo[0]) && @board[combo[0]] == @board[combo[1]] && @board[combo[0]]== @board[combo[2]]
   end
   if win == nil
     win = false
@@ -19,27 +19,27 @@ def won?(board)
   win
 end
 
-def full?(board)
-  board.none? do |index|
+def full?
+  @board.none? do |index|
     index == " " || index == nil
   end
 end
 
-def draw?(board)
-  if full?(board) && won?(board) == false
+def draw?
+  if full? && won? == false
     true
   end
 end
 
-def over?(board)
-  if won?(board) != false || draw?(board)
+def over?
+  if won? != false || draw?
     true
   end
 end
 
-def winner(board)
-  if won?(board) != false
-    board[won?(board)[0]]
+def winner
+  if won? 
+    won?[0]
   end
 end
 
@@ -47,8 +47,8 @@ def turn_count()
   @board.count { |square| square == "X" || square == "O" }
 end
 
-def current_player(board)
-  if turn_count(board) % 2 == 0
+def current_player()
+  if turn_count(@board) % 2 == 0
     "X"
   else
     "O"
